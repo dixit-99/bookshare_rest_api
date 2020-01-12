@@ -19,4 +19,11 @@ public class UserServiceImpl implements UserService {
 	public void addUser(User user) {
 		this.userDAO.addUser(user);
 	}
+
+	@Override
+	public boolean logn(String email, String password) {
+		return userDAO.logn(email, password);
+	}
+	
+	
 }

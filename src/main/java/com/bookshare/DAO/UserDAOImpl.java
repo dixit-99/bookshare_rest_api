@@ -1,5 +1,8 @@
 package com.bookshare.DAO;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +26,23 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
+
+		@Override
+		public boolean logn(String email, String password) {
+			try {
+				Session session = sessionFactory.getCurrentSession();
+				Query q = session.createQuery("from User where email = '"+email+"' and password = '"+password+"'");
+				List ls = q.list();
+				if(ls.isEmpty())
+					return false;
+				else
+					return true;
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+		
+		
 }
