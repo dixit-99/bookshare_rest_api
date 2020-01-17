@@ -42,7 +42,7 @@ public class User {
 		@Column(name = "college",nullable = false,length = 100)
 		private String college;
 		
-		@ElementCollection
+		@ElementCollection(fetch = FetchType.EAGER)
 		private Set<Wishlist> wishlist =  new HashSet<Wishlist>();
 		
 		@ElementCollection
