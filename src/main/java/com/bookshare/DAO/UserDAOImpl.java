@@ -31,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
 		public long login(String email, String password) {
 			try {
 				Session session = sessionFactory.getCurrentSession();
-				Query q = session.createQuery("userId from User where email = '"+email+"' and password = '"+password+"'");
+				Query q = session.createQuery("from User where email = '"+email+"' and password = '"+password+"'");
 				List ls = q.list();
 				if(ls.isEmpty())
 					return 0;
