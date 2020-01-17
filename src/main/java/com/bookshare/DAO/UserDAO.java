@@ -8,5 +8,7 @@ public interface UserDAO {
 		
 		void addUser(User user);
 		
+		User getUser(long userId);
+		
 //		boolean addToWishlist(long userId,long bookId);
 }

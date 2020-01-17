@@ -25,5 +25,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.login(email, password);
 	}
 	
+	@Override
+	public User getUser(long userId) {
+		return this.userDAO.getUser(userId);
+	}
+	
 	
 }

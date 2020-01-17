@@ -39,5 +39,13 @@ public class UserController {
 			return new ResponseEntity<Object>(HttpStatus.OK);
 		}
 		
+		@CrossOrigin
+		@GetMapping(value = "/profile/{userId}")
+		@ResponseBody
+		private ResponseEntity<Object> getUser(@PathVariable("userId") long userId) {
+			User user = this.userService.getUser(userId);
+			return new ResponseEntity<Object>(user,HttpStatus.OK);
+		}
+		
 		
 }
