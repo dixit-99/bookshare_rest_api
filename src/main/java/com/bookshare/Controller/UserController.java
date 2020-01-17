@@ -26,7 +26,7 @@ public class UserController {
 		@ResponseBody
 		private ResponseEntity<Object> login(@PathVariable("email") String email,@PathVariable("password") String password) {
 			System.out.println(email+ " "+password);
-			boolean b = userService.logn(email, password);
+			long b = userService.login(email, password);
 			System.out.println(b);
 			return new ResponseEntity<Object>(b,HttpStatus.OK);
 		}

@@ -28,20 +28,20 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 		@Override
-		public boolean logn(String email, String password) {
+		public long login(String email, String password) {
 			try {
 				Session session = sessionFactory.getCurrentSession();
-				Query q = session.createQuery("from User where email = '"+email+"' and password = '"+password+"'");
+				Query q = session.createQuery("userId from User where email = '"+email+"' and password = '"+password+"'");
 				List ls = q.list();
 				if(ls.isEmpty())
-					return false;
+					return 0;
 				else
-					return true;
+					return ((User)ls.get(0)).getUserId();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-			return false;
+			return 0;
 		}
 		
 		

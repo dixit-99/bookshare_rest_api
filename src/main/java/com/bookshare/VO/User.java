@@ -33,7 +33,7 @@ public class User {
 		@Column(name = "userType",nullable = false,length = 10)
 		private String userType;
 		
-		@Column(name = "email",nullable = false,length = 30)
+		@Column(name = "email",nullable = false,length = 30,unique = true)
 		private String email;
 		
 		@Column(name = "wpno",nullable = false,length = 10)
