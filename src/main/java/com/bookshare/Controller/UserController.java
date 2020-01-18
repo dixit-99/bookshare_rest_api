@@ -1,5 +1,14 @@
 package com.bookshare.Controller;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bookshare.VO.User;
 import com.bookshare.service.UserService;
@@ -44,9 +54,28 @@ public class UserController {
 		@ResponseBody
 		private ResponseEntity<Object> getUser(@PathVariable("userId") String userId) {
 			Long userId1 = Long.parseLong(userId);
-			User user = this.userService.getUser(userId1);
-			return new ResponseEntity<Object>(user,HttpStatus.OK);
+			List ls = this.userService.getUser(userId1);
+			return new ResponseEntity<Object>(ls,HttpStatus.OK);
 		}
 		
-		
+	  @CrossOrigin
+	  @PostMapping("/upload")
+	  public boolean pictureupload(@RequestParam("file") MultipartFile	 file) {
+
+			String fileName = file.getOriginalFilename();
+			
+			try {
+				byte b[] = file.getBytes();
+				
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream("D:\\"+fileName));
+				
+				bout.write(b);  
+		        bout.flush();  
+		        bout.close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+	  }
 }

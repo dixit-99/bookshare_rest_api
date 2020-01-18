@@ -45,12 +45,12 @@ public class UserDAOImpl implements UserDAO {
 		}
 		
 		@Override
-		public User getUser(long userId) {
+		public List getUser(long userId) {
 			try{
 				Session session = sessionFactory.getCurrentSession();
-				Query query = session.createQuery("from User where userId =" +userId);
+				Query query = session.createQuery("from User where userId = "+userId);
 				List ls = query.list();
-				return (User)ls.get(0);
+				return ls;
 			}
 			catch(Exception e){
 				e.printStackTrace();

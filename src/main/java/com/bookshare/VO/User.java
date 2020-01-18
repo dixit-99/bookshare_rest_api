@@ -1,12 +1,7 @@
 package com.bookshare.VO;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,11 +13,11 @@ import javax.persistence.Table;
 public class User {
 		
 		@Id
-		@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "userGenerator")
-		@SequenceGenerator(name = "userGenerator",initialValue = 100000, allocationSize = 1,sequenceName = "userSequence")
+		@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_Generator")
+		@SequenceGenerator(name = "user_Generator",initialValue = 100000, allocationSize = 1,sequenceName = "user_Sequence")
 		private long userId;
 		
-		@Column(name = "passwrod",nullable = false,length = 8)
+		@Column(name = "password",nullable = false,length = 8)
 		private String password;
 		
 		@Column(name = "firstName",nullable = false,length = 20)
@@ -42,12 +37,6 @@ public class User {
 		
 		@Column(name = "college",nullable = false,length = 100)
 		private String college;
-		
-		@ElementCollection(fetch = FetchType.EAGER)
-		private Set<Wishlist> wishlist =  new HashSet<Wishlist>();
-		
-		@ElementCollection
-		private Set<Order> order = new HashSet<Order>();
 
 		public long getUserId() {
 			return userId;
@@ -111,21 +100,5 @@ public class User {
 
 		public void setCollege(String college) {
 			this.college = college;
-		}
-
-		public Set<Wishlist> getWishlist() {
-			return wishlist;
-		}
-
-		public void setWishlist(Set<Wishlist> wishlist) {
-			this.wishlist = wishlist;
-		}
-
-		public Set<Order> getOrder() {
-			return order;
-		}
-
-		public void setOrder(Set<Order> order) {
-			this.order = order;
 		}
 }
