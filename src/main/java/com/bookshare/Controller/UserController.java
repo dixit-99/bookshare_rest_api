@@ -52,15 +52,14 @@ public class UserController {
 		@CrossOrigin
 		@GetMapping(value = "/profile/{userId}")
 		@ResponseBody
-		private ResponseEntity<Object> getUser(@PathVariable("userId") String userId) {
-			Long userId1 = Long.parseLong(userId);
-			List ls = this.userService.getUser(userId1);
+		private ResponseEntity<Object> getUser(@PathVariable("userId") long userId) {
+			List ls = this.userService.getUser(userId);
 			return new ResponseEntity<Object>(ls,HttpStatus.OK);
 		}
 		
 	  @CrossOrigin
 	  @PostMapping("/upload")
-	  public boolean pictureupload(@RequestParam("file") MultipartFile	 file) {
+	  public boolean pictureupload(@RequestParam("file") MultipartFile file) {
 
 			String fileName = file.getOriginalFilename();
 			
