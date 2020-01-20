@@ -1,7 +1,5 @@
 package com.bookshare.service;
 
-import java.util.List;
-
 import com.bookshare.VO.User;
 
 public interface UserService {
@@ -10,5 +8,5 @@ public interface UserService {
 	
 	void addUser(User user);
 	
-	List getUser(long userId);
+	User getUser(long userId);
 }

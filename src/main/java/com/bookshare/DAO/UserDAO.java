@@ -1,7 +1,5 @@
 package com.bookshare.DAO;
 
-import java.util.List;
-
 import com.bookshare.VO.User;
 
 public interface UserDAO {
@@ -10,6 +8,6 @@ public interface UserDAO {
 		
 		void addUser(User user);
 		
-		List getUser(long userId);
+		User getUser(long userId);
 		
 }
