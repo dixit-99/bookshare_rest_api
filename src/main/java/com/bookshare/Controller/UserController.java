@@ -53,8 +53,8 @@ public class UserController {
 		@GetMapping(value = "/profile/{userId}")
 		@ResponseBody
 		private ResponseEntity<Object> getUser(@PathVariable("userId") long userId) {
-			User u = this.userService.getUser(userId);
-			return new ResponseEntity<Object>(u,HttpStatus.OK);
+			List ls = this.userService.getUser(userId);
+			return new ResponseEntity<Object>(ls,HttpStatus.OK);
 		}
 		
 	  @CrossOrigin
