@@ -57,6 +57,14 @@ public class UserController {
 			return new ResponseEntity<Object>(ls,HttpStatus.OK);
 		}
 		
+		@CrossOrigin
+		@GetMapping(value = "/edit/{userId}")
+		@ResponseBody
+		private ResponseEntity<Object> editUser(@PathVariable("userId") long userId) {
+			User user = this.userService.editUser(userId);
+			return new ResponseEntity<Object>(user,HttpStatus.OK);
+		}
+		
 	  @CrossOrigin
 	  @PostMapping("/upload")
 	  public boolean pictureupload(@RequestParam("file") MultipartFile file) {

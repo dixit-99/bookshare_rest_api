@@ -58,5 +58,18 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 		
+		@Override
+		public User editUser(long userId) {
+			try{
+				Session session = sessionFactory.getCurrentSession();
+				Query query = session.createQuery("from User where userId = "+userId);
+				List ls = query.list();
+				return (User)ls.get(0);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return null;
+		}
 		
 }

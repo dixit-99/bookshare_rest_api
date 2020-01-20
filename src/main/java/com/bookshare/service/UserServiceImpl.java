@@ -32,5 +32,10 @@ public class UserServiceImpl implements UserService {
 		return this.userDAO.getUser(userId);
 	}
 	
+	@Override
+	public User editUser(long userId) {
+		return this.userDAO.editUser(userId);
+	}
+	
 	
 }

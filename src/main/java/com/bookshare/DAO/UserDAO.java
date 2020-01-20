@@ -12,4 +12,6 @@ public interface UserDAO {
 		
 		List getUser(long userId);
 		
+		User editUser(long userId);
+		
 }
