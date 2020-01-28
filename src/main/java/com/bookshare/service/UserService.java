@@ -11,6 +11,5 @@ public interface UserService {
 		void addUser(User user);
 		
 		List getUser(long userId);
-		
-		User editUser(long userId);
+
 }

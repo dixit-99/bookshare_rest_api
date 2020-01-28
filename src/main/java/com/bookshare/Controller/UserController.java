@@ -61,28 +61,7 @@ public class UserController {
 		@GetMapping(value = "/edit/{userId}")
 		@ResponseBody
 		private ResponseEntity<Object> editUser(@PathVariable("userId") long userId) {
-			User user = this.userService.editUser(userId);
+			User user = (User)this.userService.getUser(userId).get(0);
 			return new ResponseEntity<Object>(user,HttpStatus.OK);
 		}
-		
-	  @CrossOrigin
-	  @PostMapping("/upload")
-	  public boolean pictureupload(@RequestParam("file") MultipartFile file) {
-
-			String fileName = file.getOriginalFilename();
-			
-			try {
-				byte b[] = file.getBytes();
-				
-				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream("D:\\"+fileName));
-				
-				bout.write(b);  
-		        bout.flush();  
-		        bout.close();
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-			return true;
-	  }
 }

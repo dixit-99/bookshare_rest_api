@@ -61,7 +61,7 @@ public class Book {
 		private String discount;
 		
 		@Column(name="imageLink",length = 200,nullable = false)
-		private String imageLink;
+		private String imageLink = "http://img.com/img1";
 		
 		@Column(name = "seen",length = 4,nullable = false)
 		private String seen = "0";
