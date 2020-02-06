@@ -22,6 +22,10 @@ public class BookController {
 		@PostMapping(value = "/addBook")
 		@ResponseBody
 		private ResponseEntity<Object> addUser(@RequestBody Book book) {
+			System.out.println("******************************");
+			System.out.println("********** Add Book **********");
+			System.out.println("******************************");
+			System.out.println(book.toString());
 			this.bookService.addBook(book);
 			return new ResponseEntity<Object>(HttpStatus.OK);
 		}

@@ -80,8 +80,19 @@ public class Book {
 		private boolean status = true;
 		
 		//seller Id	
-		@ManyToOne(cascade = CascadeType.ALL)
+		@ManyToOne
 		private User user;
+		
+		@Override
+		public String toString() {
+			return "Book [bookId=" + bookId + ", bookName=" + bookName + ", branchName=" + branchName + ", semester="
+					+ semester + ", subjectName=" + subjectName + ", subjectCode=" + subjectCode + ", author=" + author
+					+ ", publication=" + publication + ", edition=" + edition + ", publishedYear=" + publishedYear
+					+ ", page=" + page + ", bookCondition=" + bookCondition + ", originalPrice=" + originalPrice
+					+ ", sellingPrice=" + sellingPrice + ", discount=" + discount + ", imageLinkFront=" + imageLinkFront
+					+ ", imageLinkBack=" + imageLinkBack + ", deleteFront=" + deleteFront + ", deleteBack=" + deleteBack
+					+ ", seen=" + seen + ", status=" + status + ", user=" + user + "]";
+		}
 
 		public long getBookId() {
 			return bookId;
