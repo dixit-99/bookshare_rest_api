@@ -60,8 +60,17 @@ public class Book {
 		@Column(name="discount",length = 2,nullable = false)
 		private String discount;
 		
-		@Column(name="imageLink",length = 200,nullable = false)
-		private String imageLink = "http://img.com/img1";
+		@Column(name="imageLinkFront",length = 200,nullable = false)
+		private String imageLinkFront;
+		
+		@Column(name="imageLinkBack",length = 200,nullable = false)
+		private String imageLinkBack;
+		
+		@Column(name="deleteFront",length = 100,nullable = false)
+		private String deleteFront;
+		
+		@Column(name="deleteBack",length = 100,nullable = false)
+		private String deleteBack;
 		
 		@Column(name = "seen",length = 4,nullable = false)
 		private String seen = "0";
@@ -69,7 +78,7 @@ public class Book {
 		@Column(name = "status",nullable = false)
 		private boolean status = true;
 		
-		//seller Id
+		//seller Id	
 		@ManyToOne
 		private User user;
 
@@ -193,14 +202,6 @@ public class Book {
 			this.discount = discount;
 		}
 
-		public String getImageLink() {
-			return imageLink;
-		}
-
-		public void setImageLink(String imageLink) {
-			this.imageLink = imageLink;
-		}
-
 		public String getSeen() {
 			return seen;
 		}
@@ -223,5 +224,37 @@ public class Book {
 
 		public void setUser(User user) {
 			this.user = user;
+		}
+
+		public String getImageLinkFront() {
+			return imageLinkFront;
+		}
+
+		public void setImageLinkFront(String imageLinkFront) {
+			this.imageLinkFront = imageLinkFront;
+		}
+
+		public String getImageLinkBack() {
+			return imageLinkBack;
+		}
+
+		public void setImageLinkBack(String imageLinkBack) {
+			this.imageLinkBack = imageLinkBack;
+		}
+
+		public String getDeleteFront() {
+			return deleteFront;
+		}
+
+		public void setDeleteFront(String deleteFront) {
+			this.deleteFront = deleteFront;
+		}
+
+		public String getDeleteBack() {
+			return deleteBack;
+		}
+
+		public void setDeleteBack(String deleteBack) {
+			this.deleteBack = deleteBack;
 		}
 }
