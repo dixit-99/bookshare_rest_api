@@ -1,5 +1,6 @@
 package com.bookshare.VO;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -79,7 +80,7 @@ public class Book {
 		private boolean status = true;
 		
 		//seller Id	
-		@ManyToOne
+		@ManyToOne(cascade = CascadeType.ALL)
 		private User user;
 
 		public long getBookId() {
