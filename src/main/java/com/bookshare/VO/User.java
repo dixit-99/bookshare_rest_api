@@ -38,6 +38,13 @@ public class User {
 		@Column(name = "college",nullable = false,length = 100)
 		private String college;
 
+		@Override
+		public String toString() {
+			return "User [userId=" + userId + ", password=" + password + ", firstName=" + firstName + ", lastName="
+					+ lastName + ", userType=" + userType + ", email=" + email + ", wpno=" + wpno + ", college="
+					+ college + "]";
+		}
+
 		public long getUserId() {
 			return userId;
 		}
