@@ -1,5 +1,7 @@
 package com.bookshare.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,11 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void addBook(Book book) {
 		this.bookDAO.addBook(book);
+	}
+
+	@Override
+	public List getAllBooks() {
+		return bookDAO.getAllBooks();
 	}
 
 }
