@@ -48,5 +48,15 @@ public class BookDAOImpl implements BookDAO {
 			}
 			return null;
 		}
+		
+		@Override
+	    public List<Book> getBookDetails(Book book) {
+	      
+	      Session session = sessionFactory.getCurrentSession();
+	      Query query = session.createQuery("from Book where bookId = "+book.getBookId());
+
+	      List<Book> bookDetails = query.list();  
+	      return bookDetails;
+	    }
 
 }

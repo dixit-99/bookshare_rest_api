@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,5 +40,12 @@ public class BookController {
 			
 			List allBooks = this.bookService.getAllBooks();
 			return new ResponseEntity<Object>(allBooks,HttpStatus.OK);
+		}
+		
+		@CrossOrigin
+		@GetMapping(value = "/bookDetails/{bookId}")
+		public ResponseEntity<Object> getBookDetails(@PathVariable int bookId, @ModelAttribute Book book) {
+		    List<Book> bookDetails = bookService.getBookDetails(book);
+		    return new ResponseEntity<Object>((Book)bookDetails.get(0), HttpStatus.OK);
 		}
 }

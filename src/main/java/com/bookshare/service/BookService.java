@@ -10,4 +10,6 @@ public interface BookService {
 	
 	List getAllBooks();
 	
+	List<Book> getBookDetails(Book book);
+	
 }

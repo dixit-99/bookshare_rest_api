@@ -10,4 +10,6 @@ public interface BookDAO {
 	
 	List getAllBooks();
 	
+	List<Book> getBookDetails(Book book);
+	
 }
