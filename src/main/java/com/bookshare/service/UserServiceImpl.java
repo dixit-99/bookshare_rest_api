@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bookshare.DAO.UserDAO;
 import com.bookshare.VO.User;
+import com.bookshare.VO.Wishlist;
 
 @Service
 @Transactional
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List getUser(long userId) {
 		return this.userDAO.getUser(userId);
+	}
+	
+	@Override
+	public void addWishlist(Wishlist wishlist) {
+	    this.userDAO.addWishlist(wishlist);
 	}
 
 }

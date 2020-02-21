@@ -3,6 +3,7 @@ package com.bookshare.service;
 import java.util.List;
 
 import com.bookshare.VO.User;
+import com.bookshare.VO.Wishlist;
 
 public interface UserService {
 
@@ -11,5 +12,7 @@ public interface UserService {
 		void addUser(User user);
 		
 		List getUser(long userId);
+		
+		void addWishlist(Wishlist wishlist);
 
 }

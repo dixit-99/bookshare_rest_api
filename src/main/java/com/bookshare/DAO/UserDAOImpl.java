@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bookshare.VO.User;
+import com.bookshare.VO.Wishlist;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -56,6 +57,16 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 			return null;
+		}
+		
+		@Override
+		public void addWishlist(Wishlist wishlist) {
+			try {
+		        Session session = sessionFactory.getCurrentSession();
+		        session.saveOrUpdate(wishlist);
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
 		}
 		
 }
