@@ -43,7 +43,7 @@ public class BookController {
 		}
 		
 		@CrossOrigin
-		@GetMapping(value = "/bookDetails/{bookId}")
+		@GetMapping(value = "/getBook/{bookId}")
 		public ResponseEntity<Object> getBookDetails(@PathVariable int bookId, @ModelAttribute Book book) {
 		    List<Book> bookDetails = bookService.getBookDetails(book);
 		    return new ResponseEntity<Object>((Book)bookDetails.get(0), HttpStatus.OK);
