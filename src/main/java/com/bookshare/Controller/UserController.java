@@ -68,6 +68,7 @@ public class UserController {
 			wishlist.setBook(book);
 			
 			this.userService.addWishlist(wishlist);
-			return new ResponseEntity<Object>(HttpStatus.OK);
+			long wishlistId = wishlist.getWishlistId();
+			return new ResponseEntity<Object>(wishlistId,HttpStatus.OK);
 		}
 }

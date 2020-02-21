@@ -35,7 +35,7 @@ public class BookDAOImpl implements BookDAO {
 		public List getAllBooks() {
 			try {
 				Session session = sessionFactory.getCurrentSession();
-				Query query = session.createSQLQuery("select bookId, bookName, semester, subjectName, author, publication, originalPrice, sellingPrice, discount, seen, imageLinkFront from Book");
+				Query query = session.createSQLQuery("select bookId, bookName, semester, subjectName, author, publication, originalPrice, sellingPrice, discount, seen, imageLinkFront from Book where status='true'");
 				query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 				query.setFirstResult(0);
 //				query.setMaxResults(5);
