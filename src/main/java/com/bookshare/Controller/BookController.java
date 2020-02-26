@@ -53,6 +53,7 @@ public class BookController {
 		@GetMapping(value = "/subject/{semester}/{branch}")
 		public ResponseEntity<Object> getBookDetails(@PathVariable String semester,@PathVariable int branchId) {
 		    List subjects = this.bookService.getSubjects(semester, branchId);
+		    System.out.println(subjects);
 		    return new ResponseEntity<Object>(subjects, HttpStatus.OK);
 		}
 }
