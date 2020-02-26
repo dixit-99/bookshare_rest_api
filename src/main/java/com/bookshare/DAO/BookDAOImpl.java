@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bookshare.VO.Book;
+import com.bookshare.VO.Branch;
 import com.bookshare.VO.Subject;
 import com.bookshare.VO.DTO.AllBooks;
 
@@ -68,5 +69,15 @@ public class BookDAOImpl implements BookDAO {
 			List<Map<String,Object>> subjects = query.list();
 			return subjects;
 		}
+		
+		@Override
+		public List filter(Branch branch, Subject subject) {
+		    Session session = sessionFactory.getCurrentSession();
+		    Query query = session.createSQLQuery("select bookId, bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book b where subjectCode = any(select subjectCode from subject where subjectId = '"+subject.getSubjectId()+"' and branch_branchId = '"+branch.getBranchId()+"' and semester = '"+subject.getSemester()+"')");
+		    query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+		    List<Map<String,Object>> subjects = query.list();
+		    List booksByFilter = query.list();
+		    return booksByFilter;
+		  }
 
 }

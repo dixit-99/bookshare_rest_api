@@ -3,6 +3,7 @@ package com.bookshare.DAO;
 import java.util.List;
 
 import com.bookshare.VO.Book;
+import com.bookshare.VO.Branch;
 import com.bookshare.VO.Subject;
 
 public interface BookDAO {
@@ -14,4 +15,6 @@ public interface BookDAO {
 	List<Book> getBookDetails(Book book);
 	
 	List<Subject> getSubjects(String semester, int branchId);
+	
+	List filter(Branch branch, Subject subject);
 }

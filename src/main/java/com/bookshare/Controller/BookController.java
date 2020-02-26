@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookshare.VO.Book;
+import com.bookshare.VO.Branch;
+import com.bookshare.VO.Subject;
 import com.bookshare.service.BookService;
 
 @RestController
@@ -52,9 +54,18 @@ public class BookController {
 		@CrossOrigin
 		@GetMapping(value = "/subject/{semester}/{branchId}")
 		public ResponseEntity<Object> getBookDetails(@PathVariable String semester,@PathVariable int branchId) {
-			System.out.println("andar aayu");
 		    List subjects = this.bookService.getSubjects(semester, branchId);
-		    System.out.println(subjects);
 		    return new ResponseEntity<Object>(subjects, HttpStatus.OK);
 		}
+		
+		@CrossOrigin
+		@GetMapping(value = "/filter/{semester}/{branchId}/{subjectId}")
+		public ResponseEntity<Object> filter(@PathVariable String semester, @PathVariable int subjectId, @PathVariable int branchId,@ModelAttribute Branch branch, @ModelAttribute Book book,@ModelAttribute Subject subject) {
+			branch.setBranchId(branchId);
+			subject.setSubjectId(subjectId);
+			subject.setSemester(semester);
+			List filterBooks = this.bookService.filter(branch, subject);
+			return new ResponseEntity<Object>(filterBooks,HttpStatus.OK);
+		}
+		
 }

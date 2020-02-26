@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bookshare.DAO.BookDAO;
 import com.bookshare.VO.Book;
+import com.bookshare.VO.Branch;
 import com.bookshare.VO.Subject;
 
 @Service
@@ -36,6 +37,11 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Subject> getSubjects(String semester, int branchId) {
 		return bookDAO.getSubjects(semester, branchId);
+	}
+	
+	@Override
+	public List filter(Branch branch, Subject subject) {
+	    return this.bookDAO.filter(branch, subject);
 	}
 
 }
