@@ -63,7 +63,7 @@ public class BookDAOImpl implements BookDAO {
 		@Override
 		public List getSubjects(String semester, int branchId) {
 			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createSQLQuery("select subjectname from subject where semester = '"+semester+"' and branch_branchid = "+branchId);
+			Query query = session.createSQLQuery("select subjectid,subjectname from subject where semester = '"+semester+"' and branch_branchid = "+branchId);
 			query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 			List<Map<String,Object>> subjects = query.list();
 			return subjects;
