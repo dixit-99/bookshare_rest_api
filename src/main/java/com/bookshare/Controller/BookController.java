@@ -50,7 +50,7 @@ public class BookController {
 		}
 		
 		@CrossOrigin
-		@GetMapping(value = "/subject/{semester}/{branch}")
+		@GetMapping(value = "/subject/{semester}/{branchId}")
 		public ResponseEntity<Object> getBookDetails(@PathVariable String semester,@PathVariable int branchId) {
 			System.out.println("andar aayu");
 		    List subjects = this.bookService.getSubjects(semester, branchId);
