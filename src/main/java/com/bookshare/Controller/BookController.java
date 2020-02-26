@@ -65,6 +65,7 @@ public class BookController {
 			subject.setSubjectId(subjectId);
 			subject.setSemester(semester);
 			List filterBooks = this.bookService.filter(branch, subject);
+			System.out.println(filterBooks);
 			return new ResponseEntity<Object>(filterBooks,HttpStatus.OK);
 		}
 		
