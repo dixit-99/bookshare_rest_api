@@ -68,5 +68,17 @@ public class UserDAOImpl implements UserDAO {
 		        e.printStackTrace();
 		    }
 		}
+
+		@Override
+		public void rmWishlist(Wishlist wishlist) {
+		    try {
+		      Session session = sessionFactory.getCurrentSession();
+		      session.delete(wishlist);
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    }
+		}
+		
+		
 		
 }

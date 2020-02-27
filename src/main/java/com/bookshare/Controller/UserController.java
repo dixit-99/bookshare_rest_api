@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,5 +71,13 @@ public class UserController {
 			this.userService.addWishlist(wishlist);
 			long wishlistId = wishlist.getWishlistId();
 			return new ResponseEntity<Object>(wishlistId,HttpStatus.OK);
+		}
+		
+		@CrossOrigin
+		@DeleteMapping(value = "/rmWishlist/{wishlistId}")
+		public ResponseEntity<Object> removeWihlist(@PathVariable int wishlistId,@ModelAttribute Wishlist wishlist){
+			wishlist.setWishlistId(wishlistId);
+		    this.userService.rmWishlist(wishlist);
+		    return new ResponseEntity<Object>(HttpStatus.OK);    
 		}
 }
