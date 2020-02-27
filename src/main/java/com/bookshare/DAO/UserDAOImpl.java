@@ -84,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 		@Override
 		public List getWishlist(User user) {
 			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createSQLQuery("select b.bookId, b.bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book b , wishlist w where b.bookId = w.bookId and w.userId = "+ user.getUserId());
+			Query query = session.createSQLQuery("select b.bookId, b.bookName, imageLinkFront, sellingPrice, originalPrice, discount, wishlistId, subjectName, author, publication, semester, seen from book b , wishlist w where b.bookId = w.bookId and w.userId = "+ user.getUserId());
 			query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 			List<Map<String,Object>>  getWishList = query.list();
 			return getWishList;
