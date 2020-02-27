@@ -68,6 +68,7 @@ public class UserController {
 			book.setBookId(bookId);
 			wishlist.setBook(book);
 			
+			
 			this.userService.addWishlist(wishlist);
 			long wishlistId = wishlist.getWishlistId();
 			return new ResponseEntity<Object>(wishlistId,HttpStatus.OK);
@@ -80,4 +81,14 @@ public class UserController {
 		    this.userService.rmWishlist(wishlist);
 		    return new ResponseEntity<Object>(HttpStatus.OK);    
 		}
+		
+		@CrossOrigin
+		@GetMapping(value = "/getWishlist/{userId}")
+		public ResponseEntity<Object> getWishlist(@PathVariable int userId,@ModelAttribute User user)
+		{
+			user.setUserId(userId);
+			List wishlist=this.userService.getWishlist(user);
+			return new ResponseEntity<Object>(wishlist,HttpStatus.OK);
+		}
+		
 }

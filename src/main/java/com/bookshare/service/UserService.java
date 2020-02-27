@@ -16,5 +16,7 @@ public interface UserService {
 		void addWishlist(Wishlist wishlist);
 		
 		void rmWishlist(Wishlist wishlist);
+		
+		List getWishlist(User user);
 
 }

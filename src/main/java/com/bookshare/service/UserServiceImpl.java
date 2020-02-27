@@ -43,4 +43,10 @@ public class UserServiceImpl implements UserService {
 	    this.userDAO.rmWishlist(wishlist);
 	}
 
+	@Override
+	public List getWishlist(User user) {
+		return this.userDAO.getWishlist(user);
+	}
+
+	
 }

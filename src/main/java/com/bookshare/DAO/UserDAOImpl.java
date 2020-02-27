@@ -1,10 +1,12 @@
 package com.bookshare.DAO;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -78,7 +80,14 @@ public class UserDAOImpl implements UserDAO {
 		      e.printStackTrace();
 		    }
 		}
-		
-		
-		
+
+		@Override
+		public List getWishlist(User user) {
+			Session session = sessionFactory.getCurrentSession();
+			Query query = session.createSQLQuery("select b.bookId, b.bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book b , wishlist w where b.bookId = w.bookId and w.userId = "+ user.getUserId());
+			query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+			List<Map<String,Object>>  getWishList = query.list();
+			return getWishList;
+		}
 }
+	

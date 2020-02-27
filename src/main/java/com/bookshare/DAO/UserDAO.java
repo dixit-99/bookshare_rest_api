@@ -17,4 +17,6 @@ public interface UserDAO {
 		
 		void rmWishlist(Wishlist wishlist);
 		
+		List getWishlist(User user);
+		
 }
