@@ -11,6 +11,7 @@ import com.bookshare.DAO.BookDAO;
 import com.bookshare.VO.Book;
 import com.bookshare.VO.Branch;
 import com.bookshare.VO.Subject;
+import com.bookshare.VO.User;
 
 @Service
 @Transactional
@@ -43,5 +44,10 @@ public class BookServiceImpl implements BookService {
 	public List filter(Branch branch, Subject subject) {
 	    return this.bookDAO.filter(branch, subject);
 	}
+	
+	@Override
+	  public List filter(Branch branch, Subject subject,User user) {
+	    return this.bookDAO.filter(branch, subject,user);
+	  }
 
 }

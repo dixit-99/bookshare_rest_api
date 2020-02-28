@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookshare.VO.Book;
 import com.bookshare.VO.Branch;
 import com.bookshare.VO.Subject;
+import com.bookshare.VO.User;
 import com.bookshare.service.BookService;
 
 @RestController
@@ -69,4 +70,18 @@ public class BookController {
 			return new ResponseEntity<Object>(filterBooks,HttpStatus.OK);
 		}
 		
+		@GetMapping(value = "/filterCollege/{sem}/{branchId}/{subjectId}/{college}")
+		  public ResponseEntity<Object> filter(@PathVariable String sem, @PathVariable int subjectId,
+		      @PathVariable int branchId, @PathVariable String college, @ModelAttribute User user,
+		      @ModelAttribute Branch branch, @ModelAttribute Book book, @ModelAttribute Subject subject) {
+
+		    branch.setBranchId(branchId);
+		    subject.setSubjectId(subjectId);
+		    subject.setSemester(sem);
+		    System.out.println(college);
+
+		    user.setCollege(college);
+		    List booksByFilter = this.bookService.filter(branch, subject, user);
+		    return new ResponseEntity<Object>(booksByFilter, HttpStatus.OK);
+		  }
 }
