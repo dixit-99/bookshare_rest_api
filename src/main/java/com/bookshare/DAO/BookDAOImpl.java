@@ -91,12 +91,12 @@ public class BookDAOImpl implements BookDAO {
 		    System.out.println("filter called");
 
 		    Query query = session.createSQLQuery(
-		        "select bookId, bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book b , users u where b.user_userId = u.userId and "
-		            + "subjectCode = any(select subjectCode from subject " + "where subjectId = "
-		            + subject.getSubjectId() + " and " + "branch_branchId = " + branch.getBranchId()
-		            + " and semester = " + subject.getSemester()
-		            + ") and user_userId = any(select userId from users where college = '" + user.getCollege()
-		            + "')");
+		            "select bookId, bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book b , users u where b.user_userId = u.userId and "
+		                + "subjectCode = any(select subjectCode from subject " + "where subjectId = "
+		                + subject.getSubjectId() + " and " + "branch_branchId = " + branch.getBranchId()
+		                + " and semester = " + subject.getSemester()
+		                + ") and user_userId = any(select userId from users where college = '" + user.getCollege()
+		                + "')");
 
 		    query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 
