@@ -20,4 +20,6 @@ public interface BookDAO {
 	List filter(Branch branch, Subject subject);
 			
 	List filter(Branch branch, Subject subject,User user);
+	
+	List filterBySemBranch(Branch branch, Subject subject);
 }

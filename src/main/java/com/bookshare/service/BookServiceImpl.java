@@ -49,5 +49,10 @@ public class BookServiceImpl implements BookService {
 	  public List filter(Branch branch, Subject subject,User user) {
 	    return this.bookDAO.filter(branch, subject,user);
 	  }
+	
+	@Override
+	  public List filterBySemBranch(Branch branch, Subject subject) {
+	    return this.bookDAO.filterBySemBranch(branch, subject);
+	  }
 
 }

@@ -104,5 +104,15 @@ public class BookDAOImpl implements BookDAO {
 		    return booksByCollegeFilter;
 
 		  }
+		
+		@Override
+		  public List filterBySemBranch(Branch branch, Subject subject) {
+		    Session session = sessionFactory.getCurrentSession();
+		    Query query = session.createSQLQuery("select bookId, bookName, imageLinkFront, sellingPrice, originalPrice, discount, subjectName, author, publication, semester, seen from book where subjectCode = any(select subjectCode from subject where semester = '"+subject.getSemester()+"' and branch_branchId = "+branch.getBranchId()+")");
+		    query.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+
+		    List<Map<String, Object>> booksByFilter = query.list();
+		    return booksByFilter;
+		  }
 
 }

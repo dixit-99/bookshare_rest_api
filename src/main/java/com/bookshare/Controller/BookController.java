@@ -85,4 +85,14 @@ public class BookController {
 		    List booksByFilter = this.bookService.filter(branch, subject, user);
 		    return new ResponseEntity<Object>(booksByFilter, HttpStatus.OK);
 		  }
+		
+		@CrossOrigin
+		@GetMapping(value = "/filter2/{sem}/{branchId}")
+		  public ResponseEntity<Object> filterBySemBranch(@PathVariable String sem, @PathVariable int branchId, 
+		      @ModelAttribute Subject subject, @ModelAttribute Branch branch){
+		    branch.setBranchId(branchId);
+		    subject.setSemester(sem);
+		    List booksByFilter = this.bookService.filterBySemBranch(branch, subject);
+		    return new ResponseEntity<Object>(booksByFilter, HttpStatus.OK);
+		  }
 }
