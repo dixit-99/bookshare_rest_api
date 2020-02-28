@@ -70,6 +70,7 @@ public class BookController {
 			return new ResponseEntity<Object>(filterBooks,HttpStatus.OK);
 		}
 		
+		@CrossOrigin
 		@GetMapping(value = "/filterCollege/{sem}/{branchId}/{subjectId}/{college}")
 		  public ResponseEntity<Object> filter(@PathVariable String sem, @PathVariable int subjectId,
 		      @PathVariable int branchId, @PathVariable String college, @ModelAttribute User user,
